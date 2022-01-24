@@ -1,0 +1,27 @@
+﻿@model List<ABC_Supermarket.Models.Products>
+
+<br/><br/>
+<div>
+    <a href="@Url.Action("Index", "Home")">Add.Products</a>
+</div>
+
+@{ 
+    ViewBag.Title = "GetProduct";
+}
+<h1>Products</h1>
+            @foreach (ABC_Supermarket.Models.Products ProductsObj in Model)
+            {
+                <div class="col-sm-6">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-imgtop" src="@ProductsObj.FilePath" alt="@ProductsObj.FilePath"/>
+                        <div class="card-body">
+                            <h3 class="card-title">@ProductsObj.ProductName</h3>
+                            <h5 class="card-text">@ProductsObj.Description</h5>
+                            <p class="card-text text-right">@ProductsObj.Price</p>
+                            <span>@Html.ActionLink("Edit", "Index", "Home", new { id = ProductsObj.RowKey }, new { })</span>
+                            <span>@Html.ActionLink("Delete", "Delete", "Home", new { id = ProductsObj.RowKey }, new { })</span>
+
+                        </div>
+                    </div>
+                </div>
+            }
